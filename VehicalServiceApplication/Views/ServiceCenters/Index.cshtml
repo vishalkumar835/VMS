@@ -1,0 +1,59 @@
+﻿@model IEnumerable<VehicalServiceApplication.ServiceCenter>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Booking List</h2>
+
+<button class=" btn col-md-offset-1 col-md-3">
+    @Html.ActionLink("New Booking", "Create")
+</button>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ServiceCenterName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AppoinmentBookingDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VehicleType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VehicleModel)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ServiceCenterName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AppoinmentBookingDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VehicleType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VehicleModel)
+        </td>
+        <td>
+
+           
+            <button class="btn">
+                @Html.ActionLink("Edit", "Edit", new { id = item.ServiceCenterId })
+            </button>
+        <button class="btn">
+            @Html.ActionLink("Details", "Details", new { id = item.ServiceCenterId })
+        </button>
+        <button class="btn">
+            @Html.ActionLink("Delete", "Delete", new { id = item.ServiceCenterId })
+        </button>
+        </td>
+    </tr>
+}
+
+</table>

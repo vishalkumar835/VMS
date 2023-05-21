@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="VehicleCenterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ServiceCenter">
+          <Key>
+            <PropertyRef Name="ServiceCenterId" />
+          </Key>
+          <Property Name="ServiceCenterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServiceCenterName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AppoinmentBookingDate" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="VehicleType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="VehicleModel" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserLogin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserTable">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserPhone" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserAddress" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ServiceCenterId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="VehicleCenterModelStoreContainer">
+          <EntitySet Name="ServiceCenter" EntityType="Self.ServiceCenter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserLogin" EntityType="Self.UserLogin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTable" EntityType="Self.UserTable" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VehicleCenterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ServiceCenter">
+          <Key>
+            <PropertyRef Name="ServiceCenterId" />
+          </Key>
+          <Property Name="ServiceCenterId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceCenterName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AppoinmentBookingDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VehicleType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VehicleModel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserTable">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ServiceCenterId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="VehicleCenterEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ServiceCenters" EntityType="Self.ServiceCenter" />
+          <EntitySet Name="UserTables" EntityType="Self.UserTable" />
+          <EntitySet Name="UserLogins" EntityType="VehicleCenterModel.UserLogin" />
+        </EntityContainer>
+        <EntityType Name="UserLogin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VehicleCenterModelStoreContainer" CdmEntityContainer="VehicleCenterEntities">
+          <EntitySetMapping Name="ServiceCenters">
+            <EntityTypeMapping TypeName="VehicleCenterModel.ServiceCenter">
+              <MappingFragment StoreEntitySet="ServiceCenter">
+                <ScalarProperty Name="ServiceCenterId" ColumnName="ServiceCenterId" />
+                <ScalarProperty Name="ServiceCenterName" ColumnName="ServiceCenterName" />
+                <ScalarProperty Name="AppoinmentBookingDate" ColumnName="AppoinmentBookingDate" />
+                <ScalarProperty Name="VehicleType" ColumnName="VehicleType" />
+                <ScalarProperty Name="VehicleModel" ColumnName="VehicleModel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTables">
+            <EntityTypeMapping TypeName="VehicleCenterModel.UserTable">
+              <MappingFragment StoreEntitySet="UserTable">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserPhone" ColumnName="UserPhone" />
+                <ScalarProperty Name="UserAddress" ColumnName="UserAddress" />
+                <ScalarProperty Name="ServiceCenterId" ColumnName="ServiceCenterId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserLogins">
+            <EntityTypeMapping TypeName="VehicleCenterModel.UserLogin">
+              <MappingFragment StoreEntitySet="UserLogin">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UName" ColumnName="UName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

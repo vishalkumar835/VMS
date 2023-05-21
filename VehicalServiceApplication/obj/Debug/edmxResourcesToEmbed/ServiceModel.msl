@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="VehicleCenterModelStoreContainer" CdmEntityContainer="VehicleCenterEntities">
+    <EntitySetMapping Name="ServiceCenters">
+      <EntityTypeMapping TypeName="VehicleCenterModel.ServiceCenter">
+        <MappingFragment StoreEntitySet="ServiceCenter">
+          <ScalarProperty Name="ServiceCenterId" ColumnName="ServiceCenterId" />
+          <ScalarProperty Name="ServiceCenterName" ColumnName="ServiceCenterName" />
+          <ScalarProperty Name="AppoinmentBookingDate" ColumnName="AppoinmentBookingDate" />
+          <ScalarProperty Name="VehicleType" ColumnName="VehicleType" />
+          <ScalarProperty Name="VehicleModel" ColumnName="VehicleModel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTables">
+      <EntityTypeMapping TypeName="VehicleCenterModel.UserTable">
+        <MappingFragment StoreEntitySet="UserTable">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserPhone" ColumnName="UserPhone" />
+          <ScalarProperty Name="UserAddress" ColumnName="UserAddress" />
+          <ScalarProperty Name="ServiceCenterId" ColumnName="ServiceCenterId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserLogins">
+      <EntityTypeMapping TypeName="VehicleCenterModel.UserLogin">
+        <MappingFragment StoreEntitySet="UserLogin">
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UName" ColumnName="UName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

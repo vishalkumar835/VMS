@@ -1,0 +1,224 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/font-awesome.css"rel="stylesheet" type="text/css">
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" type="text/html" />
+    
+  
+
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+    <style>
+        .collapse{
+            position:sticky;
+            text-decoration:none;
+            font-family:'poppins',sans-serif;
+            color:#a0a0a0;
+            font-size:18px;
+            letter-spacing:0.5px;
+            padding:0 10px;
+        }
+            .collapse:after {
+                content: "";
+                position: absolute;
+                background-color: #ff3c78;
+                height: 3px;
+                width: 0;
+                left: 0;
+                transition: 0.3s;
+                bottom: -2px;
+            }
+        .collapse:hover{
+            color:#ffffff;
+        }
+        .collapse:hover::after{
+            width:100%;
+
+        }
+        /*Footer css*/
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            
+        }
+
+        .container1 {
+            max-width: 1170px;
+            margin: auto;
+            
+          
+        }
+      
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .footer {
+            background-color: #24262b;
+            padding: 70px 0;
+        }
+
+        .footer-col {
+            width:25%;
+            padding: 0 15px;
+        }
+            .footer-col h4 {
+                font-size: 18px;
+                color: #ffffff;
+                text-transform: capitalize;
+                margin-bottom: 20px;
+                font-weight:500;
+                position:relative;
+            }
+            .footer-col h4::before{
+                content:'';
+                position:absolute;
+                left:0;
+                bottom:-10px;
+                background-color:#e91e63;
+                height:2px;
+                box-sizing:border-box;
+                width:50px;
+            }
+            .footer-col ul li:not(:last-child){
+                margin-bottom:10px;
+            }
+            .footer-col ul li a{
+                font-size:14px;
+                text-transform:capitalize;
+                color:#ffffff;
+                text-decoration:none;
+                font-weight:200;
+                color:#bbbbbb;
+                display:block;
+                transition:all 0.3s ease;
+            }
+            .footer-col ul li a:hover{
+                color:#ffffff;
+                padding-left:8px;
+            }
+            .footer-col .social-links a{
+                display:inline-block;
+                height:40px;
+                width:40px;
+                background-color:rgba(255,255,255,0.2);
+                margin:0 10px 10px 0;
+                text-align:center;
+                line-height:40px;
+                border-radius:50px;
+                color:#ffffff;
+                transition:all 0.3s ease;
+                
+            }
+
+            .footer-col .social-links a:hover{
+                color:#24262b;
+                background-color:#ffffff;
+
+            }
+
+        /*End Footer css*/
+      
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="collapse"> @Html.ActionLink("Vehicle Service Management System", "Index", "ServiceCenters", new { area = "" }, new { @class = "navbar-brand" })</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Booking List", "Index", "ServiceCenters")</li>
+                    <li>@Html.ActionLink("Appointment Booking", "Create", "ServiceCenters")</li>
+                    <li>@Html.ActionLink("User Detail", "Create", "UserTables")</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li><a>Welcome- @User.Identity.Name</a></li>
+                        <li>@Html.ActionLink("Logout", "Logout", "Account")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container justify-content-center bg-info mt-4">
+        @RenderBody()
+        <hr />
+    </div>
+    <footer class="footer">
+        <div class="container1">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>Vehical Management System</h4>
+                    <ul>
+                        <li>
+                            <a>
+                                @Html.ActionLink("About", "Index")
+                            </a>
+                        </li>
+                        <li><a href="#">Our Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Our Location</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Get Help</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Order Status</a></li>
+                        <li><a href="#">Payment Option</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Shop</h4>
+                    <ul>
+                        <li><a href="#">Bike Servicing</a></li>
+                        <li><a href="#">Bike Parts</a></li>
+                        <li><a href="#">Bike Assescerise</a></li>
+                        <li><a href="#">Bike Wash</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fa fa-whatsapp"></i></a>
+                        <a href="#"><i class="fa fa-facebook-square"></i></a>
+                        <a href="#"><i class="fa fa-twitter-square"></i></a>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>
